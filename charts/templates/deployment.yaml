@@ -31,7 +31,7 @@ spec:
         image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-        - name: PORT
+        - name: SERVICE_PORT
           value: "{{ .Values.service.externalPort }}"
         - name: INTERNAL_PORT
           value: "{{ .Values.service.internalPort }}"

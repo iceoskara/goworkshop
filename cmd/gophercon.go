@@ -60,5 +60,5 @@ func main() {
 	log.Print(diagserver.Stop())
 
 	// stop extra tasks ...
-	log.Print("Service was stopped!!")
+	log.Print("Service was stopped!!!")
 }

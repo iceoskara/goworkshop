@@ -1,5 +1,5 @@
 PROJECT?=github.com/iceoskara/goworkshop
-APP?=gophercon
+APP?=goworkshop
 PORT?=8000
 INTERNAL_PORT?=3001
 

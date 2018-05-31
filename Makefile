@@ -24,16 +24,13 @@ build: clean
 		-X ${PROJECT}/version.BuildTime=${BUILD_TIME}" \
 		-o ./bin/${APP} ${PROJECT}/cmd/gophercon 
 
-run: build
-	PORT=${PORT} INTERNAL_PORT=${INTERNAL_PORT} ./bin/${APP}
-
 container: build
 	docker build -t $(CONTAINER_IMAGE):$(RELEASE) .
 
 run: container
 	docker stop $(CONTAINER_IMAGE):$(RELEASE) || true && docker rm $(CONTAINER_IMAGE):$(RELEASE) || true
 	docker run --name ${APP} -p ${PORT}:${PORT} -p ${INTERNAL_PORT}:${INTERNAL_PORT} --rm \
-		-e "PORT=${PORT}" -e "INTERNAL_PORT=${INTERNAL_PORT}" \
+		-e "SERVICE_PORT=${PORT}" -e "INTERNAL_PORT=${INTERNAL_PORT}" \
 		$(CONTAINER_IMAGE):$(RELEASE)
 
 test:
